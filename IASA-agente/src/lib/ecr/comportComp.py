@@ -1,0 +1,1 @@
+"""Classe a implementar futuramente"""

@@ -14,4 +14,4 @@ class Comportamento(ABC):
     """
     @abstractmethod
     def activar(self, percepcao):
-        """Activar """
+        """Activar"""

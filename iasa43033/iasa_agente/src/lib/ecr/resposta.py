@@ -17,7 +17,7 @@ class Resposta:
     terem uma resposta prioritária. Retorna a propria acção em função da
     sua intensidade.
     """
-    def activar(self, percepcao, intensidade):
+    def activar(self, percepcao, intensidade=0):
         self._accao.prioridade = intensidade
 
         return self._accao

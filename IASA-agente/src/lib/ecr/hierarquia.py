@@ -1,29 +1,34 @@
-from ecr.comportComp import ComportComp
+from ecr.comport_comp import ComportComp
 
-"""
-Classe que implementa a classe abstrata ComportComp correspondente aos
-comportamentos compostos, implementando o tipo de comportamento mediante
-a selecção de acção, ou seja, perante comportamentos compostos estes podem
-ser abordados de várias formas diferentes dependendo da selecção da acção
-pretendida, nomeadamente hierarquia, prioridade ou fusão. Neste caso a
-classe implementa hierarquia, que se traduz numa supressão das reacções
-que se encontram mais abaixo na hierarquia, sendo executada a que se encontra
-no topo da hierarquia.
-"""
+
 class Hierarquia(ComportComp):
+    """
+    Classe que implementa a classe abstrata ComportComp correspondente aos
+    comportamentos compostos implementando a selecção de acção sob forma de
+    hierarquia
 
+    A hierarquia consiste na supressão e substituição das acções fornecidas
+    pelas várias reacções inseridas no comportamento que se encontram nos
+    níveis inferiores de uma hierarquia fixa predefinida em função da acção
+    que se encontra no topo da hierarquia, sendo esta a acção selecionada
+    para ser executada pelo agente
     """
-    Método que retorna a acção mais prioritária da hierarquia fixa.
-    Por convenção admite-se que o utilizador da Hierarquia organiza
-    a prioridade dos comportamentos compostos por ordem numérica
-    crescente, ou seja, o primeiro comportamento da lista é o mais
-    prioritário. Esta conveção leva a que as acções recebidas na classe
-    hierarquia já vêm previamente ordenadas por prioridade, fazendo
-    da lista recebida a acção prioritária a primeira entrada da lista
-    recebida, pelo que retornamos a mesma.
-    @args accoes - lista de acções correspondentes aos comportamentos
-    @returns accoes[0] - acção prioritária da hierarquia
-    """
+
     def seleccionar_accao(self, accoes):
+        """
+        Método que retorna a acção que se encontra no topo da hierarquia
+
+        Por convenção admite-se que o utilizador da hierarquia organiza
+        previamente a prioridade dos comportamentos compostos por ordem
+        numérica crescente, fornecendo os comportamentos já ordenados para
+        a lista, sendo o primeiro comportamento fornecido aquele que se
+        encontra no topo da mesma. Esta convenção leva a que o método a
+        implementar apenas necessite de retornar a primeira entrada da
+        lista, uma vez que esta é acção prioritária e aquela que deve ser
+        executada pelo agente
+
+        @param accoes: lista de acções
+        @returns: a acção que se encontra no topo da hierarquia
+        """
         if accoes:
             return accoes[0]

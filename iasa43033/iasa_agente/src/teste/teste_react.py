@@ -1,14 +1,15 @@
 from controlo_react.controlo_react import ControloReact
 from controlo_react.reaccoes.explorar.explorar import Explorar
+from controlo_react.reaccoes.recolher import Recolher
 from sae import Controlo
 from sae import Simulador
 
 """
 Ambiente de teste dos controlos reactivos, fornece-se o comportamento
-e pode-se testar o mesmo. Neste caso forneceu-se o comportamento
-explorar e verificou-se que o agente explorava o campo de jogo aleatoriamente
+e pode-se testar o mesmo.
 """
 # Ativação
 explorar = Explorar()
-controlo = ControloReact(explorar)
+recolher = Recolher()
+controlo = ControloReact(recolher)
 Simulador(1, controlo).executar()

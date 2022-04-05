@@ -1,26 +1,32 @@
-from ecr.comportComp import ComportComp
+from ecr.comport_comp import ComportComp
 
-"""
-Classe que implementa a classe abstrata ComportComp correspondente aos
-comportamentos compostos, implementando o tipo de comportamento mediante
-a selecção de acção, ou seja, perante comportamentos compostos estes podem
-ser abordados de várias formas diferentes dependendo da selecção da acção
-pretendida, nomeadamente hierarquia, prioridade ou fusão. Neste caso a
-classe implementa a Prioridade, onde as respostas são selecionadas de
-acordo com uma prioridade associada que varia ao longo do tempo. Esta
-prioridade é definida nas próprias acções, sendo, por exemplo, a distância
-que o agente se encontra de um enimigo. A classe percorre a lista de acções
-e retorna a acção com maior prioridade para ser executada.
-"""
+
 class Prioridade(ComportComp):
+    """
+    Classe que implementa a classe abstrata ComportComp correspondente aos
+    comportamentos compostos implementando a selecção de acção sob forma de
+    prioridade
 
+    Perante as várias reacções contidas no comportamento composto em função da
+    percepção do ambiente atual é implementada uma prioridade entre as reacções
+    de forma a selecionar apenas uma delas para obter a acção que o agente deve
+    executar. Esta prioridade varia ao longo do tempo e consiste num valor
+    atribuido a cada reacção que pode variar em função de valores como a
+    distância entre o agente e um objeto, por exemplo. A classe percorre a
+    lista de acções e retorna a acção com a prioridade mais elevada para ser
+    executada pelo agente.
     """
-    Método que permite percorrer a lista de acções dos comportamentos
-    e seleciona a acção com maior prioridade, que, na implementação
-    deste jogo corresponde à variável prioridade, cujo valor é um int
-    superior a 0. O parâmetro key define qual o parâmetro a que o max
-    se aplica, sendo o max a função que permite obter o maior int na lista
-    """
+
     def seleccionar_accao(self, accoes):
+        """
+        Método que percorre a lista de acções fornecida e seleciona aquela
+        com maior prioridade.
+
+        O parâmetro key define qual o parâmetro a que a função max se aplica,
+        que nos permite obter a acção com o valor mais alto
+
+        @param accoes: lista de acções
+        @returns: a acção mais prioritária da lista, a executar pelo agente
+        """
         if accoes:
             return max(accoes, key=lambda accao: accao.prioridade)

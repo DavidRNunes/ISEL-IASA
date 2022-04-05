@@ -1,17 +1,22 @@
 from abc import ABC, abstractmethod
 
-"""
-Interface abstrata que engloba reacções e outros comportamentos.
-O comportamento relaciona padrões de percepção com padrões de acção,
-pelo que o método abstrato activar tem como atributo a percepção do
-exterior.
-"""
+
 class Comportamento(ABC):
     """
-    Método abstrato que recebe como atributo a percepção do exterior
-    e é implementado na classe reacção de forma a relacionar esta
-    percepção com a sua ação correspondente
+    Interface abstrata que representa o módulo comportamental do agente
+
+    O comportamento do agente relaciona os padrões de percepção com os
+    padrões de acção, pelo que o método activar recebe a percepção atual
+    do ambiente e retorna uma acção ou mais acções correspondentes a
+    essa percepção que devem posteriormente ser processadas pelo agente
     """
+
     @abstractmethod
     def activar(self, percepcao):
-        """Activar"""
+        """
+        Método abstrato que quando implementado activa a reacção perante
+        o ambiente percepcionado, retornando a acção ou acções
+        correspondentes.
+
+        @param percepcao: estado atual do ambiente que rodeia o agente
+        """

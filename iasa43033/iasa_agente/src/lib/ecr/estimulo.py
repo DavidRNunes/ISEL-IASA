@@ -1,18 +1,23 @@
 from abc import ABC, abstractmethod
 
-"""
-Interface abstrata que indica qual o estímulo que um dado sensor
-detectou. Define o método abstrato detectar que tem como atributo a
-percepção do ambiente por parte do sensor.
-"""
-class Estimulo(ABC):
 
+class Estimulo(ABC):
     """
-    Método abstrato que recebe como atributo a percepção do exterior
-    e traduz a mesma num float que permite obter a sua intensidade.
-    Este método quando implementado na classe Reacção permite saber
-    se existe algum estímulo, ou seja, detectar um estímulo.
+    Interface abstrata que representa o estímulo detetado pelo sensor do agente.
+
+    Define o método abstrato detectar que tem como atributo a percepção do
+    ambiente por parte do sensor do agente.
     """
+
     @abstractmethod
     def detectar(self, percepcao):
-        """Detetectar estímulo numa percepção"""
+        """
+        Método abstrato que deteta uma percepção do exterior
+
+        Uma percepção do ambiente obtida pelo sensor do agente é
+        traduzida num float que permite obter a intensidade do estímulo,
+        permitindo assim detectar se a percepção activou um estímulo.
+
+        @param percepcao: estado atual do ambiente que rodeia o agente
+            percepcionado pelo sensor do mesmo
+        """

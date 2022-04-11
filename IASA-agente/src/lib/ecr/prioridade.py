@@ -15,6 +15,9 @@ class Prioridade(ComportComp):
     distância entre o agente e um objeto, por exemplo. A classe percorre a
     lista de acções e retorna a acção com a prioridade mais elevada para ser
     executada pelo agente.
+
+    @method seleccionar_accao: método que percorre a lista de acções e seleciona
+        a mais prioritária
     """
 
     def seleccionar_accao(self, accoes):

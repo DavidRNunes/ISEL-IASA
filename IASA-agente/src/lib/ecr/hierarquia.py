@@ -12,6 +12,9 @@ class Hierarquia(ComportComp):
     níveis inferiores de uma hierarquia fixa predefinida em função da acção
     que se encontra no topo da hierarquia, sendo esta a acção selecionada
     para ser executada pelo agente
+
+    @method seleccionar_accao: método que retorna a acção que se encontra
+        no topo da hierarquia
     """
 
     def seleccionar_accao(self, accoes):

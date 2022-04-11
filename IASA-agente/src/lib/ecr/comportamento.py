@@ -9,6 +9,9 @@ class Comportamento(ABC):
     padrões de acção, pelo que o método activar recebe a percepção atual
     do ambiente e retorna uma acção ou mais acções correspondentes a
     essa percepção que devem posteriormente ser processadas pelo agente
+
+    @method activar: método abstrato que activa a reacção do comportamento
+        à percepcção atual do ambiente
     """
 
     @abstractmethod

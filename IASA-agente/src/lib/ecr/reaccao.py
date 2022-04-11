@@ -13,6 +13,11 @@ class Reaccao(Comportamento):
     o módulo comportamental composto por reacções e/ou outros 
     comportamentos que por sua vez seguem a mesma regra estrutural de no
     seu interior poder ter reacções e/ou comportamentos
+
+    @param estimulo: percepção do ambiente atual
+    @param resposta: resposta ao estímulo detetado
+
+    @method activar: método que implementa a associação estímulo-resposta
     """
 
     def __init__(self, estimulo, resposta):

@@ -15,6 +15,13 @@ class ControloReact(Controlo):
     tanto uma situação como outra - perante o estado atual do ambiente esta
     classe processa a informação e obtém uma resposta única para o agente atuar
     sobre o que foi percepcionado.
+
+    @param comportamento: comportamento que pretendemos que o agente empregue
+        perante o ambiente que o rodeia
+
+    @method processar: método que processa a percepção do ambiente em função
+        do comportamento fornecido ao agente e retorna a acção que o agente
+        deve efectuar
     """
 
     def __init__(self, comportamento):

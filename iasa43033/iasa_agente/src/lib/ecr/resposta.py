@@ -4,6 +4,11 @@ class Resposta:
 
     Perante o estímulo percepcionado o agente responde ao mesmo com uma
     acção predefinida
+
+    @param accao: acção que o agente deve executar perante o estímulo
+
+    @method activar: metodo que activa a execução da resposta ao estímulo
+        por parte do agente, retornando a acção com a prioridade associada
     """
 
     def __init__(self, accao):

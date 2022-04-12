@@ -11,6 +11,8 @@ class RespostaMover(Resposta):
     É definida uma resposta específica a um estímulo que informa o agente
     da direcção para onde este se deve mover, sendo invocado o construtor
     da classe geral fornecendo à acção o argumento de direcção
+
+    @param direccao: direcção do movimento
     """
 
     def __init__(self, direccao):
@@ -18,7 +20,8 @@ class RespostaMover(Resposta):
         Método construtor da classe
 
         Invoca o construtor da superclasse Resposta e envia para a mesma
-        a acção com o argumento de direcção
+        a acção a executar com o argumento de direcção, traduzindo-se
+        num movimento na direção fornecida
 
         @param direccao: direcção para onde o agente se deve mover
         """

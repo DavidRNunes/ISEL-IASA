@@ -5,8 +5,8 @@ class Estimulo(ABC):
     """
     Interface abstrata que representa o estímulo detetado pelo sensor do agente.
 
-    Define o método abstrato detectar que tem como atributo a percepção do
-    ambiente por parte do sensor do agente.
+    @method detectar: método abstrato que tem como atributo a percepção do ambiente
+        por parte do sensor do agente e serve para detetar uma percepção do exterior
     """
 
     @abstractmethod

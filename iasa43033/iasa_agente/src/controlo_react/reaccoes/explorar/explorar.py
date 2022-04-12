@@ -16,6 +16,9 @@ class Explorar(Comportamento):
     Python, sendo esta fornecida à classe RespostaMover que, em conjunto com a
     percepcção do ambiente atual, retorna a acção de mover o agente uma unidade
     na direcção escolhida
+
+    @method activar: método que recebe a percepção do ambiente e permite
+        a deslocação do mesmo na direcção selecionada
     """
 
     def activar(self, percepcao):

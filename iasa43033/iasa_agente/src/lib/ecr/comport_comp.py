@@ -16,6 +16,13 @@ class ComportComp(Comportamento, ABC):
     um objetivo. Associado aos comportamentos compostos está ainda a
     prioridade das reacções, onde a selecção da acção a efectuar é decidida
     em função da prioridade da mesma.
+
+    @param comportamentos: lista de comportamentos do comportamento composto
+
+    @method activar: método que associa respostas aos comportamentos e retorna
+        uma acção a praticar pelo agente
+    @method seleccionar_accao: método abstrato que permite selecionar uma
+        acção por entre as várias acções do comportamento composto
     """
 
     def __init__(self, comportamentos):

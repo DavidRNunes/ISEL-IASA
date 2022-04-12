@@ -5,18 +5,26 @@ from ecr.reaccao import Reaccao
 
 class AproximarDir(Reaccao):
     """
-    Classe que implementa a classe Reaccao e indica a direcção para o qual o
-    agente se deve tentar mover
+    Classe que implementa a Reaccao correspondente à aproximação do agente em
+    direcção a um alvo que se situe perto do mesmo
+
+    Nesta classe é fornecida uma das 4 direcções do enumerador Direccao sendo
+    implementada a classe Reaccao fornecendo o estímulo correspondente ao alvo
+    mais próximo na direcção fornecida (em função da distância), e a resposta
+    a esse estímulo, nomeadamente, o movimento em direcção ao alvo
+
+    @param direccao: direcção do movimento do agente
     """
 
     def __init__(self, direccao):
         """
         Método construtor da classe AproximarDir
 
-        Fornece ao construtor da classe Reaccao o estímulo, correspondente
-        ao alvo e a resposta correspondente a mover em direcção ao alvo
+        Fornece ao construtor da classe Reaccao o estímulo correspondente
+        ao alvo mais próximo do agente e a resposta correspondente a mover
+        em direcção a esse mesmo alvo através das classes EstimuloAlvo e
+        RespostaMover, respetivamente
 
-        @param direccao: direcção para onde pretendemos que o agente tente
-            mover-se
+        @param direccao: direcção em que o agente se move
         """
         super().__init__(EstimuloAlvo(direccao), RespostaMover(direccao))

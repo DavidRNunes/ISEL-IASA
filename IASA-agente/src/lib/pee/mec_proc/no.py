@@ -6,7 +6,7 @@ class No():
 
     profundidade = 0
     """ Profundidade do nó """
-    custo = 0
+    custo = 0.0
     """ Custo da operação do nó (double) """
 
     def __init__(self, estado, operador = None, antecessor = None):
@@ -44,6 +44,13 @@ class No():
         Propriedade que permite obter o operador do nó
         """
         return self._operador
+
+    @property
+    def antecessor(self):
+        """
+        Propriedade que permite obter o antecessor do nó
+        """
+        return self._antecessor
 
     def __lt__(self, no):
         """

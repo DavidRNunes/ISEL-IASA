@@ -1,6 +1,6 @@
-from pee.mec_proc.fronteira.fronteira import Fronteira
+from pee import Fronteira
 from heapq import heappush, heappop
-from pee.mec_proc.fronteira import Avaliador
+from pee import Avaliador
 
 
 class FronteiraPrioridade(Fronteira):

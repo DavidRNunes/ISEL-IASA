@@ -4,6 +4,7 @@ from pee import Solucao
 from mod import Estado
 from mod import Operador
 from mod.problema import Problema
+from pee import Fronteira
 
 
 class MecanismoProcura(ABC):
@@ -15,6 +16,7 @@ class MecanismoProcura(ABC):
         """
         
         """
+        self._fronteira = _iniciar_fronteira()
     
     def resolver(self, problema):
         """
@@ -22,7 +24,7 @@ class MecanismoProcura(ABC):
         @returns: solução
         """
 
-    def expandir(self, problema, no):
+    def _expandir(self, problema, no):
         """
         
         @returns: lista de nós
@@ -33,14 +35,14 @@ class MecanismoProcura(ABC):
                 yield No(estado_suc, operador, no)
     
     @abstractmethod
-    def iniciar_fronteira(self):
+    def _iniciar_fronteira(self):
         """
         
         @returns: fronteira
         """
 
     @abstractmethod
-    def memorizar(self, no):
+    def _memorizar(self, no):
         """
         
         """

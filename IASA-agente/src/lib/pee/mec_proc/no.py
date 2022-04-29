@@ -1,8 +1,12 @@
+from mod.estado import Estado
+from mod.operador import Operador
+
+
 class No():
 
-    _profundidade = 0
+    profundidade = 0
     """ Profundidade do nó """
-    _custo = 0
+    custo = 0
     """ Custo da operação do nó (double) """
 
     def __init__(self, estado, operador = None, antecessor = None):
@@ -18,14 +22,14 @@ class No():
         """
         Propriedade que permite obter a profundidade do nó
         """
-        return self._profundidade
+        return self.profundidade
 
     @property
     def custo(self):
         """
         Propriedade que permite obter o custo da operação do nó
         """
-        return self._custo
+        return self.custo
 
     @property
     def estado(self):

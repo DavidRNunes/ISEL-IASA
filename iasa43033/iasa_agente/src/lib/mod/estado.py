@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 class Estado(ABC):
     """
-    Classe abstrata que representa uma configuração de um sistema ou
-    problema
+    Classe abstrata que representa uma configuração (situação) de um sistema
+    ou problema
 
     Esta classe permite definir os estados que compõem o modelo do problema
     do agente, ou seja, as várias formas que o agente se pode encontrar no
@@ -12,6 +12,10 @@ class Estado(ABC):
     dos alvos em relação ao agente. Um estado dispõe de uma identificação
     única que permite distinguir os estados e identificar dois estados
     iguais uma vez que uma dada configuração é única
+
+    @method id_valor: método abstrato que define o ID único de um estado
+    @method __hash__: função do Python que retorna o ID único de um objeto
+    @method __eq__: função do Python que compara a igualdade entre objetos
     """
 
     @abstractmethod
@@ -46,6 +50,7 @@ class Estado(ABC):
         recorremos aos hashes dos objetos, ou seja, aos seus identificadores
         únicos, caso tenham o mesmo id são o mesmo objeto
         
+        @param other: outro estado com o qual pretendemos verificar igualdade
         @returns: valor booleano da comparação entre os dois estados,
             retornando true caso sejam o mesmo Estado
         """

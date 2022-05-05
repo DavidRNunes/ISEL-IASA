@@ -1,46 +1,67 @@
 from abc import ABC
-from pee import MecanismoProcura
-from pee import No
-from pee import Solucao
+from pee.mec_proc.mecanismo_procura import MecanismoProcura
+from pee.mec_proc.no import No
 
 
 class ProcuraGrafo(MecanismoProcura, ABC):
     """
-    
+    Classe abstrata que implementa as bases para os métodos de procura por
+    grafos
+
+    Um algoritmo que verifique por redundância dos caminhos a expandir é
+    denominado de um mecanismo de procura por grafos, uma vez que guarda
+    em memória os estados que já foram previamente explorados. Desta forma
+    evita-se explorar os mesmos estados várias vezes, evitando redundância.
+    Cada um dos estados atingido é guardado num dicionário que permite
+    posteriormente verificar se o estado já foi explorado de forma a ignorar
+    o mesmo e evitando a necessidade de expandir o nó
+
+    @method resolver: método que cria o dicionário de memória de estados explorados
+    @method _memorizar: método que permite memorizar o nó no dicionário e
+        adicionar o mesmo à fronteira
+    @method _manter: método que verifica se um dado nó tem um estado previamente
+        explorado
     """
 
     def resolver(self, problema):
         """
-        Altera o método da superclasse
+        Método que cria o dicionário com o nó inicial e recorre à superclasse
+        para efectuar o algoritmo de resolução da procura
+
+        @param problema: estado inicial do agente, operadores e objetivos
+        @returns: solução do problema ou None caso não haja solução, recorrendo
+            à superclasse
         """
         no = No(problema.estado_inicial, problema.operadores)
-        if problema.objetivo(no.estado):
-            return Solucao(no)
+        self._explorados = {no.estado: no}
 
-        self._fronteira.inserir(no)
-        self._explorados = [no.estado]
-        while not self._fronteira.vazia:
-            no = self._fronteira.remover
-            for noSuc in self._expandir(problema, no):
-                estado_noSuc = noSuc.estado
-                if problema.objetivo(estado_noSuc):
-                    return Solucao(noSuc)
-                self._memorizar(noSuc)
-        return None
+        return super().resolver(problema)
 
     def _memorizar(self, no):
         """
-        Implementa o método da superclasse
+        Método que permite adicionar nós à fronteira de exploração e ao
+        dicionário de estados explorados
+
+        É feita uma verificação se o nó em causa deve ser memorizado na
+        fronteira de exploração que consiste em verificar se o estado do
+        nó já foi explorado previamente
+
+        @param no: nó que se pretende memorizar
         """
         if self._manter(no):
-            self._explorados.append(no.estado)
+            self._explorados.update({no.estado: no})
             self._fronteira.inserir(no)
 
     def _manter(self, no):
         """
-        
+        Método que verifica se o estado do nó fornecido corresponde a um
+        estado que tenha sido explorado anteriormente
+
+        @returns: True caso o nó deva ser mantido, ou seja, caso ainda não
+            tenha sido explorado, ou False caso já tenha sido explorado
+            anteriormente e deva ser ignorado
         """
-        for estado_explorado in self._explorados:
+        for estado_explorado in self._explorados.keys():
             if no.estado.__eq__(estado_explorado):
                 return False
 

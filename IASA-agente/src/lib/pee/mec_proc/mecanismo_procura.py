@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from pee import No
-from pee import Solucao
-from mod import Estado
-from mod import Operador
-from mod import Problema
-from pee import Fronteira
+from pee.mec_proc.no import No
+from pee.solucao import Solucao
+from mod.estado import Estado
+from mod.operador import Operador
+from mod.problema.problema import Problema
+from pee.mec_proc.fronteira.fronteira import Fronteira
 
 
 class MecanismoProcura(ABC):
@@ -24,12 +24,14 @@ class MecanismoProcura(ABC):
     @method _memorizar: adiciona o nó fornecido à fronteira
     """
 
+    _fronteira: Fronteira
+
     def __init__(self):
         """
         Método construtor da classe inicia a fronteira do problema
         como uma lista vazia
         """
-        self._fronteira = self._iniciar_fronteira()
+        self._iniciar_fronteira()
     
     def resolver(self, problema):
         """
@@ -50,11 +52,10 @@ class MecanismoProcura(ABC):
         """
         no = No(problema.estado_inicial, problema.operadores)
         self._fronteira.inserir(no)
-        while not self._fronteira.vazia:
-            no = self._fronteira.remover
-            if problema.objetivo(no.estado):
+        while not self._fronteira.vazia():
+            no = self._fronteira.remover()
+            if problema.objectivo(no.estado):
                 return Solucao(no)
-            
             for noSuc in self._expandir(problema, no):
                 self._memorizar(noSuc)
         return None

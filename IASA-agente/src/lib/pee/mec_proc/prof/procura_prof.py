@@ -34,6 +34,8 @@ class ProcuraProf(MecanismoProcura):
         Implementa o método da superclasse, memorizando o nó fornecido na
         fronteira de exploração com um método LIFO, colocando o novo nó
         no fim da lista de nós
+
+        @param no: nó que se pretende memorizar
         """
         self._fronteira.inserir(no)
         

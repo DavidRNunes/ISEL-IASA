@@ -3,6 +3,9 @@ from pee.mec_proc.fronteira.aval.heuristica import Heuristica
 
 
 class AvalHeur(Avaliador):
+    """
+    
+    """
 
     _heuristica: Heuristica
 

@@ -16,18 +16,21 @@ class ProcuraInformada(ProcuraMelhorPrim, ABC):
     que este deve ser simples de calcular de forma a não aumentar o tempo
     necessário para as estimações da prioridade.
 
-    @method resolver:
+    @method resolver: estende o método da superclasse ProcuraGrafo adicionando
+        a heuristica
     """
 
     _heuristica: Heuristica
 
     def resolver(self, problema, heuristica):
         """
-        Método
+        Método que estende o método resolver definido na classe ProcuraGrafo
+        adicionando a heuristica
 
-        @param problema:
-        @param heuristica:
-        @returns:
+        @param problema: estado inicial do agente, operadores e objetivos
+        @param heuristica: heuristica definida para o problema
+        @returns: solução do problema ou None caso não haja solução, recorrendo
+            à superclasse
         """
         self._heuristica = heuristica
 

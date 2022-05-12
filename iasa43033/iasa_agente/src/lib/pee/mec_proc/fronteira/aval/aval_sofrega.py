@@ -2,6 +2,9 @@ from pee.mec_proc.fronteira.aval.aval_heur import AvalHeur
 
 
 class AvalSofrega(AvalHeur):
+    """
+    
+    """
 
     def prioridade(self, no):
         """

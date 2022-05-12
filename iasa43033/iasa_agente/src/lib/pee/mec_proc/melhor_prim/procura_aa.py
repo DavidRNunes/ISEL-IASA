@@ -15,7 +15,12 @@ class ProcuraAA(ProcuraInformada):
 
     def _iniciar_avaliador(self):
         """
-        
+        Método que inicia o avaliador heurístico do problema
+
+        É iniciado o avaliador A* obtendo o custo mínimo do nó até
+        ao objetivo
+
+        @returns: avaliador da procura A*
         """
         self._avaliador = AvalAA(self._heuristica)
 

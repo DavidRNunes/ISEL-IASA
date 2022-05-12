@@ -50,7 +50,7 @@ class MecanismoProcura(ABC):
         @param problema: estado inicial do agente, operadores e objetivos
         @returns: solução do problema ou None caso não haja solução
         """
-        no = No(problema.estado_inicial, problema.operadores)
+        no = No(problema.estado_inicial)
         self._fronteira.inserir(no)
         while not self._fronteira.vazia():
             no = self._fronteira.remover()

@@ -16,16 +16,16 @@ class No():
     estados do problema
 
     @param estado: estado ao qual o nó corresponde
-    @param operador: operadores associados ao estado, default = None
+    @param operador: operador associado ao nó, default = None
     @param antecessor: estado antecessor, default = None
 
     @method __lt__: método do Python que compara dois objetos verificando
         se o primeiro é menor que o segundo
     """
 
-    profundidade = 0
+    _profundidade = 0
     """ Profundidade do nó """
-    custo = 0.0
+    _custo = 0.0
     """ Custo da operação do nó (double) """
 
     def __init__(self, estado, operador = None, antecessor = None):
@@ -33,26 +33,29 @@ class No():
         Método construtor da classe, guarda os seus atributos
 
         @param estado: estado ao qual o nó corresponde
-        @param operador: operadores associados ao estado, default = None
+        @param operador: operador que associa o estado inicial (antecessor)
+            ao estado sucessor (estado), default = None
         @param antecessor: estado antecessor, default = None
         """
         self._estado = estado
         self._operador = operador
         self._antecessor = antecessor
+        if operador:
+            self._custo = operador.custo(antecessor, estado)
 
     @property
     def profundidade(self):
         """
         Propriedade que permite obter o valor da profundidade do nó
         """
-        return self.profundidade
+        return self._profundidade
 
     @property
     def custo(self):
         """
         Propriedade que permite obter o valor do custo da operação do nó
         """
-        return self.custo
+        return self._custo
 
     @property
     def estado(self):

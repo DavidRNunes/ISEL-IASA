@@ -32,7 +32,7 @@ class ProcuraGrafo(MecanismoProcura, ABC):
         @returns: solução do problema ou None caso não haja solução, recorrendo
             à superclasse
         """
-        no = No(problema.estado_inicial, problema.operadores)
+        no = No(problema.estado_inicial)
         self._explorados = {no.estado: no}
 
         return super().resolver(problema)

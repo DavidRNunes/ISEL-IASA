@@ -14,12 +14,12 @@ class Heuristica(ABC):
     @abstractmethod
     def h(self, estado):
         """
-        Método que define a função h independente do custo do
-        caminho até ao estado fornecido, dependendo apenas do
-        estado e do objetivo
+        Método a implementar que define a função h independente do custo
+        do caminho até ao estado fornecido, dependendo apenas do estado
+        actual e do objetivo
 
-        @param estado: estado que se pretende estimar o custo desde
-            ele prórprio até ao objetivo
+        @param estado: estado para o qual se pretende estimar o custo do
+            percurso desde ele prórprio até ao objetivo
         @returns: valor estimado do custo desde o estado até ao
             objetivo, em double
         """

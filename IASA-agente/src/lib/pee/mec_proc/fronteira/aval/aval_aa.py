@@ -3,8 +3,8 @@ from pee.mec_proc.fronteira.aval.aval_heur import AvalHeur
 
 class AvalAA(AvalHeur):
     """
-    Classe que implementa a interface Avaliador obtendo a prioridade do nó
-    em função do custo do trajeto até ao nó atual e do custo mínimo até ao
+    Classe que implementa a classe da avaliação heurística obtendo a prioridade
+    do nó em função do custo do trajeto até ao nó atual e do custo mínimo até ao
     nó objetivo - Avaliação A*
 
     @method prioridade: calcula a prioridade do nó em função do custo mínimo

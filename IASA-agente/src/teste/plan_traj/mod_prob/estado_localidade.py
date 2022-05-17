@@ -33,7 +33,7 @@ class EstadoLocalidade(Estado):
         Método que implementa o método abstrato da classe Estado
         permitindo definir o ID único para este estado
 
-        @returns: identificador do estado em formato int
+        @returns: identificador do estado em formato int hashed
         """
         return hash(self._localidade)
 

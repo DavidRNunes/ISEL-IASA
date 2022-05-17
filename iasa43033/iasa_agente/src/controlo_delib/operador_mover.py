@@ -14,13 +14,13 @@ class OperadorMover(Operador):
     agente deslocar-se no mundo que o rodeia
     """
 
-    def __init__(self, modelo_mundo, ang):
+    def __init__(self, modelo_mundo, direccao):
         """
         
         """
-        self._ang = ang
+        self._ang = direccao.value
         self._modelo_mundo = modelo_mundo
-        self._accao = Accao(ang)
+        self._accao = Accao(direccao)
 
     @property
     def ang(self):

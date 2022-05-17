@@ -34,6 +34,7 @@ class ProblemaPlanTraj(Problema):
         self._operadores = []
         for ligacao in ligacoes:
             self._operadores.append(OperadorLigacao(ligacao.origem, ligacao.destino, ligacao.custo))
+            
         super().__init__(self._estado_inicial, self._operadores)
 
     def objectivo(self, estado):

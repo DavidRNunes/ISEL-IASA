@@ -1,3 +1,4 @@
+import math
 from controlo_delib.modelo_mundo import ModeloMundo
 from sae import Controlo
 from sae.ambiente.elemento import Elemento
@@ -86,7 +87,8 @@ class ControloDelib(Controlo):
 
         @returns: booleano correspondente à alteração do modelo do mundo
         """
-        return self._modelo_mundo.alterado
+        estado_actual = self._modelo_mundo.estado()
+        return self._modelo_mundo.alterado or not self._planeador.plano_valido(estado_actual)
 
     def _deliberar(self):
         """
@@ -100,6 +102,9 @@ class ControloDelib(Controlo):
         estados = self._modelo_mundo.estados()
         self._objetivos = [estado for estado in estados 
                             if self._modelo_mundo.obter_elem(estado) == Elemento.ALVO]
+        if self._objetivos:
+            estado_actual = self._modelo_mundo.estado()
+            self._objetivos.sort(key=lambda estado:math.dist(estado.posicao, estado_actual.posicao))
 
     def _planear(self):
         """

@@ -23,14 +23,20 @@ class No():
         se o primeiro é menor que o segundo
     """
 
-    _profundidade = 0
     """ Profundidade do nó """
-    _custo = 0.0
+    _profundidade = 0
     """ Custo da operação do nó (double) """
-
+    _custo = 0.0
+    
     def __init__(self, estado, operador = None, antecessor = None):
         """
         Método construtor da classe, guarda os seus atributos
+
+        O custo e a profundidade estão dependentes da existência de um operador,
+        ou seja, é necessário haver uma mudança de estado para haver um custo
+        de operação e uma mudança de profundidade na árvore de procura, sendo
+        então obtidos em função do custo da operação e incrementando a profundidade
+        do nó actual em relação ao nó antecessor
 
         @param estado: estado ao qual o nó corresponde
         @param operador: operador que associa o estado inicial (antecessor)
@@ -42,6 +48,7 @@ class No():
         self._antecessor = antecessor
         if operador:
             self._custo = operador.custo(antecessor, estado)
+            self._profundidade = antecessor.profundidade + 1
 
     @property
     def profundidade(self):
@@ -92,4 +99,4 @@ class No():
             se o nó actual tiver um custo menor do que o nó com o qual
             estamos a comparar
         """
-        return self.custo < no.custo
+        return self._custo < no.custo

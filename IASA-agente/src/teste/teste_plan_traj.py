@@ -54,7 +54,7 @@ ligacoes_complementar = [
 
 
 loc_inicial = "Loc-0"
-loc_final = "Loc-4"
+loc_final = "Loc-3"
 planeador = PlaneadorTrajeto()
 solucao = planeador.planear(ligacoes, loc_inicial, loc_final)
 planeador.mostrar_trajecto(solucao)

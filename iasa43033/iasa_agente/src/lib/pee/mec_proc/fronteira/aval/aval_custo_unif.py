@@ -19,10 +19,9 @@ class AvalCustoUnif(Avaliador):
         @returns: custo do nó e dos seus antecessores correspondente ao
             custo do caminho até ao nó fornecido, valor em double
         """
-        self._no = no
-        custo = self._no.custo
-        while self._no.antecessor:
-            custo += self._no.antecessor.custo
-            self._no = no.antecessor
+        custo = 0.0
+        while no.antecessor:
+            custo += no.custo
+            no = no.antecessor
 
         return custo

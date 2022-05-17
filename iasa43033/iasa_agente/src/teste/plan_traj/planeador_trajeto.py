@@ -31,6 +31,9 @@ class PlaneadorTrajeto():
         Método que constrói o problema e define qual o mecanismo de procura
         a ser utilizado para resolver esse mesmo problema
 
+        Ao alterar o mecanismo a utilizar neste método é possível testar e
+        obter diferentes soluções para o mesmo problema
+
         @param ligacoes: lista de ligações entre localidades e o seu custo
         @param loc_inicial: localidade inicial em que se encontra o agente
         @param loc_final: localidade que se pretende que o agente atinja
@@ -38,7 +41,7 @@ class PlaneadorTrajeto():
         @returns: solução do problema caso encontre uma        
         """
         problema = ProblemaPlanTraj(ligacoes, loc_inicial, loc_final)
-        mecanismo = ProcuraCustoUnif()
+        mecanismo = ProcuraProf()
         solucao = mecanismo.resolver(problema)
 
         return solucao
@@ -46,10 +49,15 @@ class PlaneadorTrajeto():
     def mostrar_trajecto(self, solucao):
         """
         Método que permite obter o trajeto da solução imprimindo os passos
-        dados desde a localidade inicial até à localidade final para a consola
+        dados desde a localidade inicial até à localidade final para a consola,
+        caso haja uma solução
 
         @param solucao: a solução do problema
         """
-        for x in range(solucao.dimensao):
-            passo = solucao.remover_passo()
-            print(passo.estado.localidade)
+        if solucao:
+
+            for x in range(solucao.dimensao):
+                solucao.remover_passo()
+                print(solucao[0].estado.localidade)
+        else:
+            print("Não foi encontrada uma solução.")

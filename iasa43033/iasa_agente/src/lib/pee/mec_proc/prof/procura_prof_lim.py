@@ -50,9 +50,9 @@ class ProcuraProfLim(ProcuraProf):
         @param no: nó que se pretende expandir (nó em estudo)
         @returns: lista de nós filho do nó fornecido obtidos com recurso ao método
             da superclasse caso a profundidade seja menor que o máximo definido,
-            retorna None caso contrário, não expandindo o nó
+            retorna uma lista vazia caso contrário, não expandindo o nó
         """
-        if no.profundidade <= self._prof_max:
+        if no.profundidade < self._prof_max:
             return super()._expandir(problema, no)
         else:
-            return None
+            return []

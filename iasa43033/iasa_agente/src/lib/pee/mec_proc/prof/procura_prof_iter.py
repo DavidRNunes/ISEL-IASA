@@ -33,5 +33,7 @@ class ProcuraProfIter(ProcuraProfLim):
         """
         for prof in range(0, prof_max, inc_prof):
             solucao = super().resolver(problema, prof)
-            if solucao is not None:
+            if solucao:
                 return solucao
+                
+        return solucao

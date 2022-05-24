@@ -1,6 +1,7 @@
-from controlo_react.reaccoes.aproximar.aproximar_dir import AproximarDir
-from ecr.prioridade import Prioridade
-from sae.ambiente.direccao import Direccao
+from ecr import Prioridade
+from sae import Direccao
+
+from .aproximar_dir import AproximarDir
 
 
 class AproximarAlvo(Prioridade):
@@ -16,7 +17,7 @@ class AproximarAlvo(Prioridade):
     leva à aproximação do agente ao alvo devido ao método que seleciona a acção mais
     prioritária entre os comportamentos constituintes do comportamento AproximarAlvo
     """
-    
+
     def __init__(self):
         """
         Método construtor da classe AproximarAlvo

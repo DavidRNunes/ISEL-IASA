@@ -1,16 +1,16 @@
 from abc import ABC, abstractmethod
-from pee.mec_proc.no import No
-from pee.solucao import Solucao
-from mod.estado import Estado
-from mod.operador import Operador
-from mod.problema.problema import Problema
-from pee.mec_proc.fronteira.fronteira import Fronteira
+
+from mod import Estado, Operador, Problema
+
+from ..solucao import Solucao
+from .fronteira.fronteira import Fronteira
+from .no import No
 
 
 class MecanismoProcura(ABC):
     """
     Classe abstrata que define um mecanismo de procura 
-    
+
     Mecanismo de procura é um algoritmo que recebe um problema e percorre
     um espaço de estados até encontrar uma solução ou uma indicação de 
     falha (inexistência de solução). A forma como o espaço de estados é 
@@ -31,8 +31,8 @@ class MecanismoProcura(ABC):
         Método construtor da classe inicia a fronteira do problema
         como uma lista vazia
         """
-        self._iniciar_fronteira()
-    
+        self._fronteira = []
+
     def resolver(self, problema):
         """
         Implementa o algoritmo de resolução base de todos os mecanismos
@@ -40,17 +40,18 @@ class MecanismoProcura(ABC):
 
         Establece o nó inicial como sendo o estado inicial do problema e
         associa-lhe os operadores da transformação de estado. Este nó é
-        inserido na fronteira de exploração e de seguida é analisada a 
-        fronteira até que esta fique vazia ou retorne a solução do problema
-        após percorrer todos os estados do espaço de estados - remove-se os
-        nós em estudo da fronteira e avaliando se são a solução pretendida
-        caso contrário adicionam-se os nós-filho à fronteira e repete-se
-        o ciclo de exploração.
+        inserido na fronteira de exploração, iniciada também ela neste ponto,
+        e de seguida é analisada a fronteira até que esta fique vazia ou
+        retorne a solução do problema após percorrer todos os estados do
+        espaço de estados - remove-se os nós em estudo da fronteira e
+        avaliando se são a solução pretendida caso contrário adicionam-se
+        os nós-filho à fronteira e repete-se o ciclo de exploração
 
         @param problema: estado inicial do agente, operadores e objetivos
         @returns: solução do problema ou None caso não haja solução
         """
         no = No(problema.estado_inicial)
+        self._fronteira = self._iniciar_fronteira()
         self._fronteira.inserir(no)
         while not self._fronteira.vazia():
             no = self._fronteira.remover()
@@ -78,13 +79,13 @@ class MecanismoProcura(ABC):
             estado_suc = operador.aplicar(no.estado)
             if estado_suc:
                 yield No(estado_suc, operador, no)
-    
+
     @abstractmethod
     def _iniciar_fronteira(self):
         """
         Método abstrato que inicia a fronteira associada ao mecanismo em
         causa
-        
+
         @returns: fronteira do mecanismo vazia
         """
 

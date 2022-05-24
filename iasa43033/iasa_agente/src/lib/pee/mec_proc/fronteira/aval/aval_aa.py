@@ -1,4 +1,4 @@
-from pee.mec_proc.fronteira.aval.aval_heur import AvalHeur
+from .aval_heur import AvalHeur
 
 
 class AvalAA(AvalHeur):
@@ -17,6 +17,7 @@ class AvalAA(AvalHeur):
         do custo global
 
         @param no: nó em estudo
-        @returns: custo do caminho até ao nó com o custo mínimo até ao objetivo
+        @returns: custo do caminho até ao nó somado ao custo mínimo até ao objetivo
         """
+
         return no.custo + self._heuristica.h(no.estado)

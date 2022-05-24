@@ -1,8 +1,9 @@
 from random import choice
 
-from controlo_react.reaccoes.resposta.resposta_mover import RespostaMover
-from ecr.comportamento import Comportamento
-from sae.ambiente.direccao import Direccao
+from ecr import Comportamento
+from sae import Direccao
+
+from ..resposta.resposta_mover import RespostaMover
 
 
 class Explorar(Comportamento):

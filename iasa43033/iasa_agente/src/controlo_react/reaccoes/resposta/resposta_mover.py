@@ -1,4 +1,4 @@
-from ecr.resposta import Resposta
+from ecr import Resposta
 from sae import Accao
 
 

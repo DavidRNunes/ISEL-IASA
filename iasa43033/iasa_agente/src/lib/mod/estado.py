@@ -23,7 +23,7 @@ class Estado(ABC):
         """
         Método abstrato a ser implementado que irá definir um identificador
         único para o estado criado
-        
+
         @returns: identificador único do estado em formato int
         """
 
@@ -35,7 +35,7 @@ class Estado(ABC):
         uma vez que esse id_valor será um identificador único do estado
         quando este é criado, pelo que na função basta retornar o int
         em id_valor
-        
+
         @returns: identificador único do estado
         """
         return self.id_valor()
@@ -49,7 +49,7 @@ class Estado(ABC):
         Estado são iguais, ou seja, se dois estados são iguais. Para tal
         recorremos aos hashes dos objetos, ou seja, aos seus identificadores
         únicos, caso tenham o mesmo id são o mesmo objeto
-        
+
         @param other: outro estado com o qual pretendemos verificar igualdade
         @returns: valor booleano da comparação entre os dois estados,
             retornando true caso sejam o mesmo Estado

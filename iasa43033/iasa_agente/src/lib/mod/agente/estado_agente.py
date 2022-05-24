@@ -1,4 +1,4 @@
-from mod.estado import Estado
+from ..estado import Estado
 
 
 class EstadoAgente(Estado):
@@ -23,7 +23,6 @@ class EstadoAgente(Estado):
         @param posicao: tuplo da posição actual do agente no mundo
         """
         self._posicao = posicao
-        super().__init__()
 
     @property
     def posicao(self):

@@ -1,5 +1,5 @@
-from pee.mec_proc.fronteira.fronteira_fifo import FronteiraFIFO
-from pee.mec_proc.procura_grafo import ProcuraGrafo
+from ..fronteira.fronteira_fifo import FronteiraFIFO
+from ..procura_grafo import ProcuraGrafo
 
 
 class ProcuraLarg(ProcuraGrafo):
@@ -26,6 +26,5 @@ class ProcuraLarg(ProcuraGrafo):
 
         @returns: fronteira do tipo FIFO vazia
         """
-        self._fronteira = FronteiraFIFO()
 
-        return self._fronteira
+        return FronteiraFIFO()

@@ -1,4 +1,4 @@
-from pee.mec_proc.fronteira.aval.aval_heur import AvalHeur
+from .aval_heur import AvalHeur
 
 
 class AvalSofrega(AvalHeur):
@@ -20,4 +20,5 @@ class AvalSofrega(AvalHeur):
         @param no: nó actual em estudo
         @returns: estimativa do custo desde o nó actual até ao objetivo
         """
+
         return self._heuristica.h(no.estado)

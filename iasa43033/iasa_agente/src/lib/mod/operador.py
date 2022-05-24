@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from mod.estado import Estado
+
+from .estado import Estado
 
 
 class Operador(ABC):
@@ -21,7 +22,7 @@ class Operador(ABC):
         """
         Método abstrato que quando implementado aplica o novo estado ao
         agente, efectivamente gerando a transformação de estado
-        
+
         @param estado: estado inicial ao qual se pretende aplicar o
             operador
         @returns: estado após a transformação ser aplicada
@@ -32,7 +33,7 @@ class Operador(ABC):
         """
         Método abstrato que quando implementado retorna o custo da
         transição de estado entre os estados fornecidos
-        
+
         @param estado: estado inicial ao qual se aplica o operador
         @param estado_suc: estado sucessor após a transição de estado
         @returns: valor do custo da operação em double

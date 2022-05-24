@@ -1,7 +1,8 @@
-from controlo_react.reaccoes.aproximar.aproximar_alvo import AproximarAlvo
-from controlo_react.reaccoes.evitar.evitar_obst import EvitarObst
-from controlo_react.reaccoes.explorar.explorar import Explorar
-from ecr.hierarquia import Hierarquia
+from ecr import Hierarquia
+
+from .aproximar.aproximar_alvo import AproximarAlvo
+from .evitar.evitar_obst import EvitarObst
+from .explorar.explorar import Explorar
 
 
 class Recolher(Hierarquia):
@@ -10,7 +11,7 @@ class Recolher(Hierarquia):
     herda as propriedades da classe abstrata ComportComp, implementando os
     métodos das superclasses traduz-se no comportamento composto que engloba os
     comportamentos AproximarAlvo, EvitarObst e Explorar
-    
+
     Permite ao agente activar cada comportamento de acordo com o ambiente que o
     rodeia e de acordo com a hierarquia pré-definida para cada um deles, ou seja,
     quando é ativado o comportamento Recolher, o agente executa os comportamentos

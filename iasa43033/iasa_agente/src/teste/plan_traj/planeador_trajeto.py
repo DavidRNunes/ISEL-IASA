@@ -1,10 +1,7 @@
-from pee.solucao import Solucao
-from teste.plan_traj.mod_prob.problema_plan_traj import ProblemaPlanTraj
-from pee.mec_proc.melhor_prim.procura_custo_unif import ProcuraCustoUnif
-from pee.mec_proc.prof.procura_prof import ProcuraProf
-from pee.mec_proc.prof.procura_prof_lim import ProcuraProfLim
-from pee.mec_proc.prof.procura_prof_iter import ProcuraProfIter
-from pee.mec_proc.larg.procura_larg import ProcuraLarg
+from pee import (ProcuraCustoUnif, ProcuraLarg, ProcuraProf, ProcuraProfIter,
+                 ProcuraProfLim, Solucao)
+
+from .mod_prob.problema_plan_traj import ProblemaPlanTraj
 
 
 class PlaneadorTrajeto():
@@ -17,7 +14,7 @@ class PlaneadorTrajeto():
     Este planeador utiliza um dos mecanismos previamente definidos, podendo
     utilizar qualquer um deles, servindo assim de teste à implementação dos
     mecanismos de procura
-    
+
     @param ligacoes: lista das ligações entre as localidades
     @param loc_inicial: localidade inicial do agente, em string
     @param loc_final: localidade final (objetivo) do problema, em string
@@ -25,7 +22,7 @@ class PlaneadorTrajeto():
     @method planear: constrói o problema e define o mecanismo de procura
     @method mostrar_trajeto: imprime para a consola o trajeto da solução
     """
-    
+
     def planear(self, ligacoes, loc_inicial, loc_final):
         """
         Método que constrói o problema e define qual o mecanismo de procura
@@ -41,7 +38,7 @@ class PlaneadorTrajeto():
         @returns: solução do problema caso encontre uma        
         """
         problema = ProblemaPlanTraj(ligacoes, loc_inicial, loc_final)
-        mecanismo = ProcuraProf()
+        mecanismo = ProcuraCustoUnif()
         solucao = mecanismo.resolver(problema)
 
         return solucao
@@ -55,9 +52,10 @@ class PlaneadorTrajeto():
         @param solucao: a solução do problema
         """
         if solucao:
-
-            for x in range(solucao.dimensao):
-                solucao.remover_passo()
-                print(solucao[0].estado.localidade)
+            while solucao.dimensao > 1:
+                passo = solucao.remover_passo()
+                print(passo.estado.localidade)
+            no_final = solucao[0]
+            print(no_final.estado.localidade)
         else:
             print("Não foi encontrada uma solução.")

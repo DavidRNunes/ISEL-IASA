@@ -1,5 +1,6 @@
-from mod.operador import Operador
-from teste.plan_traj.mod_prob.estado_localidade import EstadoLocalidade
+from mod import Operador
+
+from .estado_localidade import EstadoLocalidade
 
 
 class OperadorLigacao(Operador):
@@ -22,7 +23,7 @@ class OperadorLigacao(Operador):
         do nó retornando o destino em caso afirmativo
     @method custo: retorna o custo da operação entre os dois nós fornecidos
     """
-    
+
     _custo: int
     _estado_origem: EstadoLocalidade
     _estado_destino: EstadoLocalidade
@@ -53,8 +54,6 @@ class OperadorLigacao(Operador):
         """
         if estado.__eq__(self._estado_origem):
             return self._estado_destino
-        else:
-            return None
 
     def custo(self, estado, estado_suc):
         """

@@ -1,7 +1,8 @@
 import math
-from controlo_delib.modelo_mundo import ModeloMundo
-from sae import Controlo
-from sae.ambiente.elemento import Elemento
+
+from sae import Controlo, Elemento
+
+from .modelo_mundo import ModeloMundo
 
 
 class ControloDelib(Controlo):
@@ -19,7 +20,7 @@ class ControloDelib(Controlo):
     definido anteriormente ainda é válido para esta nova percepção mais
     recente do ambiente, completando assim a arquitectura deliberativa
 
-    @param planeador: planeador do controlo
+    @param planeador: modelo de planeamento automático
 
     @method processar: método que representa o processo de tomada de
         acção de um agente deliberativo
@@ -42,6 +43,9 @@ class ControloDelib(Controlo):
 
         Inicia o planeador do controlo deliberado e o modelo do mundo,
         criando ainda a lista de objetivos do agente vazia
+
+        @param planeador: modelo de planeamento automático orientado para
+            gerar uma estratégia de execução de operações por parte do agente
         """
         self._planeador = planeador
         self._objetivos = []
@@ -58,7 +62,7 @@ class ControloDelib(Controlo):
         actualizando os seus objetivos em função das alterações em caso
         afirmativo, sendo posteriormente definido um novo plano de acção
         de forma a executar a acção que se adequa ao mundo
-        
+
         @param percepcao: vista actual do mundo que rodeia o agente
             percepcionada pelo mesmo
         @returns: accção a ser executada pelo agente
@@ -67,6 +71,7 @@ class ControloDelib(Controlo):
         if self._reconsiderar():
             self._deliberar()
             self._planear()
+        self._mostrar()
         return self._executar()
 
     def _assimilar(self, per):
@@ -100,11 +105,12 @@ class ControloDelib(Controlo):
         onde o agente se deve deslocar
         """
         estados = self._modelo_mundo.estados()
-        self._objetivos = [estado for estado in estados 
-                            if self._modelo_mundo.obter_elem(estado) == Elemento.ALVO]
+        self._objetivos = [estado for estado in estados
+                           if self._modelo_mundo.obter_elem(estado) == Elemento.ALVO]
         if self._objetivos:
             estado_actual = self._modelo_mundo.estado()
-            self._objetivos.sort(key=lambda estado:math.dist(estado.posicao, estado_actual.posicao))
+            self._objetivos.sort(key=lambda estado: math.dist(
+                estado.posicao, estado_actual.posicao))
 
     def _planear(self):
         """

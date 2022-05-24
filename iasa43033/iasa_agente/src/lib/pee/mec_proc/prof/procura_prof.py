@@ -1,5 +1,5 @@
-from pee.mec_proc.fronteira.fronteira_lifo import FronteiraLIFO
-from pee.mec_proc.mecanismo_procura import MecanismoProcura
+from ..fronteira.fronteira_lifo import FronteiraLIFO
+from ..mecanismo_procura import MecanismoProcura
 
 
 class ProcuraProf(MecanismoProcura):
@@ -25,9 +25,7 @@ class ProcuraProf(MecanismoProcura):
 
         @returns: fronteira do tipo LIFO vazia
         """
-        self._fronteira = FronteiraLIFO()
-
-        return self._fronteira
+        return FronteiraLIFO()
 
     def _memorizar(self, no):
         """
@@ -38,4 +36,3 @@ class ProcuraProf(MecanismoProcura):
         @param no: nó que se pretende memorizar
         """
         self._fronteira.inserir(no)
-        

@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
-from multiprocessing import reduction
-from pee.mec_proc.fronteira.fronteira_prioridade import FronteiraPrioridade
-from pee.mec_proc.procura_grafo import ProcuraGrafo
+
+from ..fronteira.aval.avaliador import Avaliador
+from ..fronteira.fronteira_prioridade import FronteiraPrioridade
+from ..procura_grafo import ProcuraGrafo
 
 
 class ProcuraMelhorPrim(ProcuraGrafo, ABC):
@@ -35,9 +36,8 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
         @returns: fronteira de prioridade com o avaliador fornecido
         """
         self._avaliador = self._iniciar_avaliador()
-        self._fronteira = FronteiraPrioridade(self._avaliador)
 
-        return self._fronteira
+        return FronteiraPrioridade(self._avaliador)
 
     def _manter(self, no):
         """
@@ -54,7 +54,9 @@ class ProcuraMelhorPrim(ProcuraGrafo, ABC):
         no_aberto = super()._manter(no)
         if not no_aberto:
             no_explorado = self._explorados[no.estado]
-            avaliar = self._avaliador.prioridade(no) < self._avaliador.prioridade(no_explorado)
+            prioridade_no = self._avaliador.prioridade(no)
+            prioridade_explorado = self._avaliador.prioridade(no_explorado)
+            avaliar = prioridade_no < prioridade_explorado
             return no_aberto or avaliar
 
         return no_aberto

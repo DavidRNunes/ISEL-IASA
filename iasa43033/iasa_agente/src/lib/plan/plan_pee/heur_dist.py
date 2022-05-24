@@ -1,6 +1,8 @@
 import math
-from mod.estado import Estado
-from pee.mec_proc.fronteira.aval.heuristica import Heuristica
+
+from mod import Estado
+from pee import Heuristica
+
 
 class HeurDist(Heuristica):
     """
@@ -10,20 +12,19 @@ class HeurDist(Heuristica):
     que leva o agente ao objetivo final
 
     @param estado_final: estado correspondente ao estado do objetivo
-    
+
     @method h: método que permite obter a distância entre o agente
         e o objetivo final
     """
 
-    """ Estado final correspondente ao objetivo """
     _estado_final: Estado
+    """ Estado final correspondente ao objetivo """
 
     def __init__(self, estado_final):
         """
         Método construtor da classe heurística da distância        
         """
         self._estado_final = estado_final
-
 
     def h(self, estado):
         """
@@ -34,5 +35,4 @@ class HeurDist(Heuristica):
         @param estado: estado actual do agente
         @returns: distância entre o agente e o objetivo
         """
-        return math.dist(estado.posicao, self._estado_final.posicao) 
-        
+        return math.dist(estado.posicao, self._estado_final.posicao)

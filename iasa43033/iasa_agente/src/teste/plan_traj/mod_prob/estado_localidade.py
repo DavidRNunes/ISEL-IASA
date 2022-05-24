@@ -1,4 +1,4 @@
-from mod.estado import Estado
+from mod import Estado
 
 
 class EstadoLocalidade(Estado):
@@ -26,7 +26,6 @@ class EstadoLocalidade(Estado):
             estado corresponde
         """
         self._localidade = localidade
-        
 
     def id_valor(self):
         """

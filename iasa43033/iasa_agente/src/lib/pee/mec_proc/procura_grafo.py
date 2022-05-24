@@ -1,6 +1,7 @@
 from abc import ABC
-from pee.mec_proc.mecanismo_procura import MecanismoProcura
-from pee.mec_proc.no import No
+
+from .mecanismo_procura import MecanismoProcura
+from .no import No
 
 
 class ProcuraGrafo(MecanismoProcura, ABC):
@@ -32,8 +33,7 @@ class ProcuraGrafo(MecanismoProcura, ABC):
         @returns: solução do problema ou None caso não haja solução, recorrendo
             à superclasse
         """
-        no = No(problema.estado_inicial)
-        self._explorados = {no.estado: no}
+        self._explorados = {}
 
         return super().resolver(problema)
 
@@ -62,7 +62,7 @@ class ProcuraGrafo(MecanismoProcura, ABC):
             anteriormente e deva ser ignorado
         """
         for estado_explorado in self._explorados.keys():
-            if no.estado.__eq__(estado_explorado):
+            if no.estado == estado_explorado:
                 return False
 
         return True

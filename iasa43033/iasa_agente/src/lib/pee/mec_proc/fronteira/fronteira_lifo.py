@@ -1,4 +1,4 @@
-from pee.mec_proc.fronteira.fronteira import Fronteira
+from .fronteira import Fronteira
 
 
 class FronteiraLIFO(Fronteira):
@@ -19,7 +19,7 @@ class FronteiraLIFO(Fronteira):
         """
         Método que permite inserir um nó na lista da fronteira, neste caso
         os nós são adicionados no fim da lista
-        
+
         @param no: nó que se pretende adicionar à lista da fronteira
         """
         self._nos.append(no)

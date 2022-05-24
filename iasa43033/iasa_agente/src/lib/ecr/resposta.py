@@ -1,3 +1,6 @@
+from sae import Accao
+
+
 class Resposta:
     """
     Classe que representa a resposta ativada pelo estímulo

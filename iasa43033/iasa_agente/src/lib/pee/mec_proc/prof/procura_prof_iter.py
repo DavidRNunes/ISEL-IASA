@@ -1,4 +1,4 @@
-from pee.mec_proc.prof.procura_prof_lim import ProcuraProfLim
+from .procura_prof_lim import ProcuraProfLim
 
 
 class ProcuraProfIter(ProcuraProfLim):
@@ -35,5 +35,5 @@ class ProcuraProfIter(ProcuraProfLim):
             solucao = super().resolver(problema, prof)
             if solucao:
                 return solucao
-                
+
         return solucao

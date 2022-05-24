@@ -1,6 +1,8 @@
-from mod.problema.problema import Problema
-from teste.plan_traj.mod_prob.estado_localidade import EstadoLocalidade
-from teste.plan_traj.mod_prob.operador_ligacao import OperadorLigacao
+from mod import Problema
+
+from ..ligacao import Ligacao
+from .estado_localidade import EstadoLocalidade
+from .operador_ligacao import OperadorLigacao
 
 
 class ProblemaPlanTraj(Problema):
@@ -33,8 +35,9 @@ class ProblemaPlanTraj(Problema):
         self._estado_final = EstadoLocalidade(loc_final)
         self._operadores = []
         for ligacao in ligacoes:
-            self._operadores.append(OperadorLigacao(ligacao.origem, ligacao.destino, ligacao.custo))
-            
+            self._operadores.append(OperadorLigacao(
+                ligacao.origem, ligacao.destino, ligacao.custo))
+
         super().__init__(self._estado_inicial, self._operadores)
 
     def objectivo(self, estado):

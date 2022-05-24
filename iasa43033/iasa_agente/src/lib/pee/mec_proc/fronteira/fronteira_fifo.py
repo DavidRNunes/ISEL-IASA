@@ -1,4 +1,4 @@
-from pee.mec_proc.fronteira.fronteira import Fronteira
+from .fronteira import Fronteira
 
 
 class FronteiraFIFO(Fronteira):
@@ -20,7 +20,7 @@ class FronteiraFIFO(Fronteira):
         """
         Método que permite inserir um nó na lista da fronteira, neste caso
         os nós são adicionados no início da lista
-        
+
         @param no: nó que se pretende adicionar à lista da fronteira
         """
         self._nos.insert(0, no)

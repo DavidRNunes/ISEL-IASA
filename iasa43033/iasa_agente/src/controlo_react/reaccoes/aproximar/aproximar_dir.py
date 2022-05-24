@@ -1,6 +1,7 @@
-from controlo_react.reaccoes.aproximar.estimulo_alvo import EstimuloAlvo
-from controlo_react.reaccoes.resposta.resposta_mover import RespostaMover
-from ecr.reaccao import Reaccao
+from ecr import Reaccao
+
+from ..resposta.resposta_mover import RespostaMover
+from .estimulo_alvo import EstimuloAlvo
 
 
 class AproximarDir(Reaccao):

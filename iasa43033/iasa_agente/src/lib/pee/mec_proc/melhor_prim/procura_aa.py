@@ -1,6 +1,5 @@
-from pee.mec_proc.fronteira.aval.aval_aa import AvalAA
-from pee.mec_proc.fronteira.aval.aval_heur import AvalHeur
-from pee.mec_proc.melhor_prim.procura_informada import ProcuraInformada
+from ..fronteira.aval.aval_aa import AvalAA
+from .procura_informada import ProcuraInformada
 
 
 class ProcuraAA(ProcuraInformada):
@@ -31,6 +30,5 @@ class ProcuraAA(ProcuraInformada):
 
         @returns: avaliador da procura A*
         """
-        self._avaliador = AvalAA(self._heuristica)
 
-        return self._avaliador
+        return AvalAA(self._heuristica)

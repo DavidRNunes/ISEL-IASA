@@ -1,7 +1,7 @@
+from ecr import Reaccao
 
-from controlo_react.reaccoes.evitar.estimulo_obst import EstimuloObst
-from controlo_react.reaccoes.resposta.resposta_evitar import RespostaEvitar
-from ecr.reaccao import Reaccao
+from ..resposta.resposta_evitar import RespostaEvitar
+from .estimulo_obst import EstimuloObst
 
 
 class EvitarDir(Reaccao):

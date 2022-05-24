@@ -1,6 +1,7 @@
-from pee.mec_proc.fronteira.fronteira import Fronteira
-from heapq import heappush, heappop
-from pee.mec_proc.fronteira.aval.avaliador import Avaliador
+from heapq import heappop, heappush
+
+from .aval.avaliador import Avaliador
+from .fronteira import Fronteira
 
 
 class FronteiraPrioridade(Fronteira):
@@ -28,7 +29,6 @@ class FronteiraPrioridade(Fronteira):
         self._avaliador = avaliador
         super().__init__()
 
-
     def inserir(self, no):
         """
         Método que permite colocar nós na lista sem alterar a sua estrutura
@@ -37,7 +37,7 @@ class FronteiraPrioridade(Fronteira):
         """
         prioridade_no = self._avaliador.prioridade(no)
         heappush(self._nos, (prioridade_no, no))
-    
+
     def remover(self):
         """
         Método que obtém o nó mais prioritário da lista da fronteira

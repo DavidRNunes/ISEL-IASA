@@ -1,8 +1,8 @@
-
 from random import choice
-from controlo_react.reaccoes.resposta.resposta_mover import RespostaMover
-from sae import Accao
-from sae import Direccao
+
+from sae import Accao, Direccao
+
+from .resposta_mover import RespostaMover
 
 
 class RespostaEvitar(RespostaMover):
@@ -30,7 +30,7 @@ class RespostaEvitar(RespostaMover):
         de obstáculos
     """
 
-    def __init__(self, dir_inicial = Direccao.ESTE):
+    def __init__(self, dir_inicial=Direccao.ESTE):
         """
         Método construtor da classe RespostaEvitar
 
@@ -57,7 +57,7 @@ class RespostaEvitar(RespostaMover):
         de obstáculos, ou recorrer ao método direccao_livre para encontrar
         uma direcção livre para o agente se mover evitando quaisquer obstáculos
         na sua proximidade
-        
+
         @param percepcao: percepção atual do ambiente que rodeia o agente
         @param intensidade: intensidade do estímulo percepcionado, neste caso,
             relacionado com a distância a que o agente se encontra do obstáculo
@@ -67,9 +67,8 @@ class RespostaEvitar(RespostaMover):
         """
         if percepcao.contacto_obst(self._dir_inicial):
             self._accao.direccao = self.direccao_livre(percepcao)
-            return super().activar(percepcao, intensidade)
-        else:
-            return super().activar(percepcao, intensidade)
+
+        return super().activar(percepcao, intensidade)
 
     def direccao_livre(self, percepcao):
         """
@@ -80,11 +79,11 @@ class RespostaEvitar(RespostaMover):
         as imediações do agente em cada direcção por obstáculos, guardando numa
         variável as direcções cujo espaço mais próximo se encontra livre de
         obstáculos, retornando de seguida um dos valores da lista aleatóriamente
-        
+
         @param percepcao: percepção actual do ambiente que rodeia o agente
         @returns: uma direcção livre
         """
         dir_livres = [direccao for direccao in self._direccoes
-                        if not percepcao.contacto_obst(direccao)]
+                      if not percepcao.contacto_obst(direccao)]
 
         return choice(list(dir_livres))

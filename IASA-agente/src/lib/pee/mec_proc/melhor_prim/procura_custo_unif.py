@@ -1,5 +1,5 @@
-from pee.mec_proc.fronteira.aval.aval_custo_unif import AvalCustoUnif
-from pee.mec_proc.melhor_prim.procura_melhor_prim import ProcuraMelhorPrim
+from ..fronteira.aval.aval_custo_unif import AvalCustoUnif
+from .procura_melhor_prim import ProcuraMelhorPrim
 
 
 class ProcuraCustoUnif(ProcuraMelhorPrim):
@@ -24,6 +24,4 @@ class ProcuraCustoUnif(ProcuraMelhorPrim):
         @returns: avaliador da prioridade custo uniforme
         """
 
-        self._avaliador = AvalCustoUnif()
-
-        return self._avaliador
+        return AvalCustoUnif()

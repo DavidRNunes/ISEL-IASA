@@ -1,8 +1,8 @@
+from ecr import Hierarquia
+from sae import Direccao
 
-from controlo_react.reaccoes.evitar.evitar_dir import EvitarDir
-from controlo_react.reaccoes.resposta.resposta_evitar import RespostaEvitar
-from ecr.hierarquia import Hierarquia
-from sae.ambiente.direccao import Direccao
+from ..resposta.resposta_evitar import RespostaEvitar
+from .evitar_dir import EvitarDir
 
 
 class EvitarObst(Hierarquia):

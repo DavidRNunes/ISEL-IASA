@@ -1,4 +1,6 @@
 from .comportamento import Comportamento
+from .estimulo import Estimulo
+from .resposta import Resposta
 
 
 class Reaccao(Comportamento):
@@ -28,7 +30,6 @@ class Reaccao(Comportamento):
         @param resposta: resposta ao estímulo detetado em função da sua
             intensidade
         """
-
         self._estimulo = estimulo
         self._resposta = resposta
 
@@ -46,7 +47,6 @@ class Reaccao(Comportamento):
         @returns: a resposta ao estímulo detectado, ou seja, a acção a tomar
             pelo agente
         """
-
         intensidade = self._estimulo.detectar(percepcao)
 
         if intensidade > 0:

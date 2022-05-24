@@ -1,3 +1,4 @@
+from ecr import Comportamento
 from sae import Controlo
 
 

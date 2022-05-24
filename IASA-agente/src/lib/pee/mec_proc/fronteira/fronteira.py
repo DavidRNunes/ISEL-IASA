@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from ..no import No
+
 
 class Fronteira(ABC):
     """
@@ -23,11 +25,11 @@ class Fronteira(ABC):
 
     def __init__(self):
         """
-        Método construtor da classe, inicia a fronteira como uma lista
-        vazia
+        Método construtor da classe, inicia a fronteira como uma lista de
+        nós vazia
         """
         self._nos = []
-    
+
     def vazia(self):
         """
         Método que permite verificar se a fronteira se encontra vazia,

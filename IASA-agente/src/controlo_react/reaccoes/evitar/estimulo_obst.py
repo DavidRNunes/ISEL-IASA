@@ -1,5 +1,5 @@
-
-from ecr.estimulo import Estimulo
+from ecr import Estimulo
+from sae import Direccao
 
 
 class EstimuloObst(Estimulo):
@@ -33,7 +33,7 @@ class EstimuloObst(Estimulo):
         """
         self._direccao = direccao
         self._intensidade = intensidade
-    
+
     def detectar(self, percepcao):
         """
         Método que permite ao agente percepcionar o ambiente em seu redor e

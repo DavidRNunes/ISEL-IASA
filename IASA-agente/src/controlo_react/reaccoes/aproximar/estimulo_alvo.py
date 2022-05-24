@@ -1,5 +1,5 @@
-from ecr.estimulo import Estimulo
-from sae import Elemento
+from ecr import Estimulo
+from sae import Direccao, Elemento
 
 
 class EstimuloAlvo(Estimulo):

@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 
+from ..estado import Estado
+from ..operador import Operador
+
 
 class Problema(ABC):
     """
@@ -16,10 +19,15 @@ class Problema(ABC):
         do problema
     @param operadores: lista de acções que o agente pode executar para
         alterar o seu estado
-    
+
     @method objetivo: método abstrato que permite saber se um estado em
         estudo é um objetivo do problema
     """
+
+    _estado_inicial: Estado
+    """ Estado inicial do agente """
+    _operadores: Operador
+    """ Operadores do problema """
 
     def __init__(self, estado_inicial, operadores):
         """
@@ -52,7 +60,7 @@ class Problema(ABC):
         """
         Método abstrato que permite identificar se um estado fornecido
         é um objetivo deste problema
-        
+
         @param estado: estado em teste
         @returns: valor booleano que permite saber se o estado em estudo
             é um objetivo deste problema

@@ -1,5 +1,4 @@
-from pee.mec_proc.no import No
-from pee.mec_proc.prof.procura_prof import ProcuraProf
+from .procura_prof import ProcuraProf
 
 
 class ProcuraProfLim(ProcuraProf):
@@ -13,7 +12,7 @@ class ProcuraProfLim(ProcuraProf):
     terminando a procura nesse caminho, mesmo que ainda não tenha sido
     encontrada uma solução, pelo que a profundidade escolhida deve ser obtida
     com algum cuidado relativo ao problema.
-    
+
     @method resolver: implementa o algoritmo de resolução, guarda o valor da
         profundidade máxima que se pretende atingir de forma a limitar a
         expansão de novos nós quando a mesma é atingida
@@ -23,10 +22,10 @@ class ProcuraProfLim(ProcuraProf):
 
     _prof_max: int
 
-    def resolver(self, problema, prof_max = 1000):
+    def resolver(self, problema, prof_max=1000):
         """
         Método que implementa o algoritmo de resolução
-    
+
         Guarda o valor da profundidade máxima que se pretende atingir com a
         intenção de limitar a expansão de novos nós quando se atinge essa
         profundidade e chama a superclasse para usar a resolução base dos

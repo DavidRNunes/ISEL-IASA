@@ -1,4 +1,4 @@
-from pee.mec_proc.fronteira.aval.avaliador import Avaliador
+from .avaliador import Avaliador
 
 
 class AvalCustoUnif(Avaliador):
@@ -19,9 +19,5 @@ class AvalCustoUnif(Avaliador):
         @returns: custo do nó e dos seus antecessores correspondente ao
             custo do caminho até ao nó fornecido, valor em double
         """
-        custo = 0.0
-        while no.antecessor:
-            custo += no.custo
-            no = no.antecessor
 
-        return custo
+        return no.custo

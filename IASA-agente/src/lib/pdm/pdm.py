@@ -17,14 +17,19 @@ class PDM():
     do estado permite obter o melhor caminho a tomar em função do
     sucesso dos estados ao longo do tempo
 
-    @param modelo:
-    @param gama:
-    @param delta_max:
+    @param modelo: modelo do processo de decisão de Markov
+    @param gama: factor de desconto em função do tempo (profundidade)
+    @param delta_max: valor da recompensa mínima 
 
-    @method utilidade:
-    @method util_accao:
-    @method politica:
-    @method resolver:
+    @method utilidade: calcula a utilidade de cada estado no espaço de
+        estados
+    @method util_accao: suporta o cálculo da utilidade e da política em
+        função do gama definido, obtendo o valor do somatório da função
+        de transição de estados
+    @method politica: obtém o dicionário da política óptima para os estados
+        do mundo
+    @method resolver: resolve o processo de decisão de Markov retornando
+        o tuplo da utilidade e da política obtidos
     """
 
     _gama: float
@@ -92,7 +97,7 @@ class PDM():
         R = self._modelo.R
         gama = self._gama
 
-        return sum(p * (R(s, a, sn) + gama * U(sn)) for p, sn in T(s, a))
+        return sum(p * (R(s, a, sn) + gama * U[sn]) for p, sn in T(s, a))
 
     def politica(self, U):
         """
@@ -105,14 +110,15 @@ class PDM():
 
         @param U: dicionário do valor da utilidade para cada estado
         @returns: dicionário da política de estados, correspondente à estratégia
-            de acção para cada estado
+            de acção para cada estado no formato {estado: accao}
         """
         S = self._modelo.S
         A = self._modelo.A
 
         pol = {}
         for s in S():
-            pol[s] = max(A(s), key=lambda a:self.util_accao(s, a, U))
+            if A(s):
+                pol[s] = max(A(s), key=lambda a:self.util_accao(s, a, U))
 
         return pol
 

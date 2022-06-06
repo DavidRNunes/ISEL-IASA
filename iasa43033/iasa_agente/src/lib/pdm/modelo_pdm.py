@@ -30,7 +30,7 @@ class ModeloPDM(ABC):
         Método abstrato que representa o conjunto de acções possíveis
         no estado s fornecido
 
-        @param s:
+        @param s: estado actual pertencente ao conjunto de estados em S
         @returns: lista de operadores do modelo do mundo
         """
 
@@ -41,8 +41,8 @@ class ModeloPDM(ABC):
         estado s fornecido para um estado seguinte s' através da acção
         a também ela fornecida
 
-        @param s:
-        @param a:
+        @param s: estado actual pertencente ao conjunto de estados em S
+        @param a: acção que se pretende aplicar ao estado s
         @returns: lista de tuplos das transições contendo a probabilidade
             da transição e o estado seguinte
         """
@@ -54,8 +54,8 @@ class ModeloPDM(ABC):
         transição do estado s para sn por meio da acção a, todos eles
         fornecidos ao método
 
-        @param s:
-        @param a:
-        @param sn:
+        @param s: estado actual pertencente ao conjunto de estados em S
+        @param a: acção que se pretende aplicar ao estado s
+        @param sn: estado sucessor após se aplicar a acção a ao estado s
         @returns: o valor da recompensa em double
         """

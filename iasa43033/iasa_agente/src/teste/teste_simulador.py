@@ -1,6 +1,6 @@
 from controlo_delib import ControloDelib
 from controlo_react import ControloReact, Explorar, Recolher
-from plan import PlanPEE
+from plan import PlanPEE, PlanPDM
 from sae import Controlo, Simulador
 
 
@@ -40,7 +40,8 @@ recolher = Recolher()
 controlo_react = ControloReact(recolher)
 
 """
-Teste ao agente usando um controlador deliberativo
+Teste ao agente usando um controlador deliberativo utilizando um planeador
+de espaços de estados
 
 Para testar o agente deliberativo criamos um plano recorrendo aos
 planeadores da biblioteca plan e fornecemos esse planeador ao controlador
@@ -56,10 +57,18 @@ a custo da rapidez de execução do algoritmo.
 planeador = PlanPEE()
 controlo_delib = ControloDelib(planeador)
 
+"""
+Teste ao agente usando o controlador deliberativo através de processos de
+decisão de Markov
+
+
+"""
+planeador = PlanPDM()
+controlo_delib = ControloDelib(planeador)
 
 """
 Ativação do controlador no ambiente de simulador
 
 i - iniciar; t - terminar; p - pausa; e - executar passo; v - velocidade 
 """
-Simulador(4, controlo_delib).executar()
+Simulador(3, controlo_delib).executar()

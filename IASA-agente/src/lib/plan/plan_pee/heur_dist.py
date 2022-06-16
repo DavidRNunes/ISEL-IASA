@@ -28,7 +28,7 @@ class HeurDist(Heuristica):
 
     def h(self, estado):
         """
-        Método que cria a função heur+istica que permite obter
+        Método que cria a função heuristica que permite obter
         a distância entre o estado actual e o objetivo através
         das posições dos mesmos no mundo
 

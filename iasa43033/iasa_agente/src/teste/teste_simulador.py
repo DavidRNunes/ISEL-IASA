@@ -1,6 +1,7 @@
+from controlo_aprend import ControloAprendRef
 from controlo_delib import ControloDelib
 from controlo_react import ControloReact, Explorar, Recolher
-from plan import PlanPEE, PlanPDM
+from plan import PlanPDM, PlanPEE
 from sae import Controlo, Simulador
 
 
@@ -37,7 +38,9 @@ presentes numa área e tenha de se deslocar para detectar outro alvo).
 """
 explorar = Explorar()
 recolher = Recolher()
-controlo_react = ControloReact(recolher)
+controlo_react_exp = ControloReact(explorar)
+controlo_react_rec = ControloReact(recolher)
+
 
 """
 Teste ao agente usando um controlador deliberativo utilizando um planeador
@@ -54,8 +57,9 @@ o agente captura todos os alvos depende apenas do mecanismo de procura a
 ser utilizado, sendo que alguns permitem obter o percurso com menor custo
 a custo da rapidez de execução do algoritmo.
 """
-planeador = PlanPEE()
-controlo_delib = ControloDelib(planeador)
+planeador_pee = PlanPEE()
+controlo_delib_pee = ControloDelib(planeador_pee)
+
 
 """
 Teste ao agente usando o controlador deliberativo através de processos de
@@ -63,12 +67,27 @@ decisão de Markov
 
 
 """
-planeador = PlanPDM()
-controlo_delib = ControloDelib(planeador)
+planeador_pdm = PlanPDM()
+controlo_delib_pdm = ControloDelib(planeador_pdm)
+
+
+"""
+Teste ao agente usando o controlador de aprendizagem por reforço
+
+
+"""
+controlo_aprend_ref = ControloAprendRef()
+
 
 """
 Ativação do controlador no ambiente de simulador
 
+Fornecer um dos controladores disponíveis:
+controlo_react_exp, controlo_react_rec, controlo_delib_pee,
+controlo_delib_pdm, controlo_aprend_ref
+
+Utilizar reiniciar=True para o controlo de aprendizagem por reforço
+
 i - iniciar; t - terminar; p - pausa; e - executar passo; v - velocidade 
 """
-Simulador(3, controlo_delib).executar()
+Simulador(2, controlo_aprend_ref, reiniciar=True).executar()

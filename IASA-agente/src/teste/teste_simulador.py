@@ -86,6 +86,8 @@ Fornecer um dos controladores disponíveis:
 controlo_react_exp, controlo_react_rec, controlo_delib_pee,
 controlo_delib_pdm, controlo_aprend_ref
 
+Utilizar reiniciar=True para o controlo de aprendizagem por reforço
+
 i - iniciar; t - terminar; p - pausa; e - executar passo; v - velocidade 
 """
-Simulador(3, controlo_delib_pdm).executar()
+Simulador(2, controlo_aprend_ref, reiniciar=True).executar()

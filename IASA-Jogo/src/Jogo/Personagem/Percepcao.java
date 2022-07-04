@@ -1,6 +1,6 @@
-package Jogo.personagem;
+package Jogo.Personagem;
 
-import Jogo.ambiente.Evento;
+import Jogo.Ambiente.Evento;
 
 /**
  * Classe que simula a percepção de um agente.

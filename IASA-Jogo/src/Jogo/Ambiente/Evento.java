@@ -1,4 +1,4 @@
-package Jogo.ambiente;
+package Jogo.Ambiente;
 
 /**
  * Enumerador que representa os vários eventos imutáveis possíveis de ocorrer num

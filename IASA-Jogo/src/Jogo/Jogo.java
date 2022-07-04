@@ -1,8 +1,8 @@
 package Jogo;
 
-import Jogo.ambiente.Ambiente;
-import Jogo.ambiente.Evento;
-import Jogo.personagem.Personagem;
+import Jogo.Ambiente.Ambiente;
+import Jogo.Ambiente.Evento;
+import Jogo.Personagem.Personagem;
 
 /**
  * Classe executável pai que cria as restantes classes que compõem o jogo a

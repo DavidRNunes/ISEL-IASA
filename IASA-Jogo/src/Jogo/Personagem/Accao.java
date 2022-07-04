@@ -1,4 +1,4 @@
-package Jogo.Personagem;
+package Jogo.personagem;
 
 /**
  * Enumerador que representa as várias acções imutáveis que um agente inteligente

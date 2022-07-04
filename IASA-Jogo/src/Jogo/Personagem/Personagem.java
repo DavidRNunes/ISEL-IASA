@@ -1,7 +1,7 @@
-package Jogo.Personagem;
+package Jogo.personagem;
 
-import Jogo.Ambiente.Ambiente;
-import Jogo.Ambiente.Evento;
+import Jogo.ambiente.Ambiente;
+import Jogo.ambiente.Evento;
 
 /**
  * Personagem é a classe representante de um agente inteligente que interage com um 

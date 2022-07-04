@@ -1,4 +1,4 @@
-package Jogo.Ambiente;
+package Jogo.ambiente;
 
 import java.util.HashMap;
 import java.util.Map;

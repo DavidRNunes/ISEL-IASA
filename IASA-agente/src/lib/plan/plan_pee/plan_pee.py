@@ -58,7 +58,7 @@ class PlanPEE(Planeador):
         if objetivos:
             estado_final = objetivos.pop(0)
             problema = ProblemaPlan(modelo_plan, estado_final)
-            self._mec_pee = ProcuraAA()
+            self._mec_pee = ProcuraSofrega()
             heuristica = HeurDist(estado_final)
             self._solucao = self._mec_pee.resolver(problema, heuristica)
             print("Custo: %s" % self._solucao.custo)
